@@ -1,0 +1,132 @@
+* {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #141e30,
+    #243b55
+  ); /* 漸層方向:上->下 */
+}
+
+.container {
+  height: 100%;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ml15 {
+  /* padding-top: 50px; */
+  font-weight: 900;
+  font-size: 128px;
+  /* text-transform: uppercase; */
+}
+.ml15 .word {
+  display: inline-block;
+  line-height: 1em;
+
+  font-family: "Kanit", sans-serif;
+  background: linear-gradient(to bottom, #fffc00, #fff);
+
+  background-clip: text;
+  -webkit-background-clip: text; /* chrome要加這行才有用 */
+  color: transparent;
+}
+
+.wrap {
+  height: 100%;
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  perspective: 800px; /* 景深 */
+  text-align: center;
+}
+
+.wrap h1 {
+  padding-top: 0px;
+  font-weight: 900;
+  font-size: 128px;
+
+  font-family: "Kanit", sans-serif;
+  background: linear-gradient(to bottom, #fffc00, #fff);
+  background-clip: text;
+  -webkit-background-clip: text; /* chrome要加這行才有用 */
+  color: transparent;
+}
+
+.wrap h1.active {
+  animation: displayPhoto 1s;
+  -moz-animation: displayPhoto 1s; /* Firefox */
+  -webkit-animation: displayPhoto 1s; /* Safari and Chrome */
+  -o-animation: displayPhoto 1s; /* Opera */
+}
+
+.box {
+  width: 120px;
+  height: 180px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  margin-left: -60px;
+  margin-top: -90px;
+  transform: rotateX(-15deg) rotateY(0deg);
+  transform-style: preserve-3d; /*3D眼鏡*/
+}
+
+.box.active {
+  animation: displayPhoto 1s;
+  -moz-animation: displayPhoto 1s; /* Firefox */
+  -webkit-animation: displayPhoto 1s; /* Safari and Chrome */
+  -o-animation: displayPhoto 1s; /* Opera */
+}
+
+@keyframes displayPhoto {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.box div {
+  width: 120px;
+  height: 180px;
+  position: absolute;
+}
+
+.box img {
+  /* height: 100%;
+  width: 100%; */
+  cursor: pointer;
+}
+
+.box img.active {
+  /* 圖片放大倍率 */
+  height: 150%;
+  width: 150%;
+
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  margin-left: 30px;
+  margin-top: 45px;
+}
