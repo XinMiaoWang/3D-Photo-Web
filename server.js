@@ -21,7 +21,7 @@ const server = app.listen(port, function () {
 
 
 app.get('/3DPhoto', function (req, res) {
-	res.render( 'main.html' );
+	res.render( 'index.html' );
 })
 
 
