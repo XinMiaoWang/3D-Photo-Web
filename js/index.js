@@ -88,8 +88,7 @@ function displayPhoto(){
 function ShowPhoto(){
     // 圓圈布局
     for(let i=0; i<aLi.length; i++){
-        // transition: property  duration  timing-function  delay;
-        // transition: 套用的屬性 花費時間   時間速率         等待時間;
+
         aLi[i].style.transition='all 0.5s '+((aLi.length-1-i)*0.2)+'s'; // 為每張圖片設置，開始進行轉場效果之前，所要等待的時間
         aLi[i].style.transform = 'rotateY(' + (i*rotateDeg) + 'deg) translateZ(380px)'; // 為每一個div設置旋轉角度
     }
@@ -121,11 +120,6 @@ function setMouse(){
             minusX = nowX - lastX;
             minusY = nowY - lastY;
 
-            /*
-                在初始值(roX、roY)上進行差值的變化
-                    box的Y軸旋轉對應滑鼠X軸的差值變化
-                    box的X軸旋轉對應滑鼠Y軸的差值變化
-            */
             roX -= minusY * 0.2;
             roY += minusX * 0.1;
             oBox.style.transform = 'rotateX(' + roX + 'deg) rotateY(' + roY + 'deg)';
@@ -144,27 +138,11 @@ function setMouse(){
     }
 }
 
-/*
-1. js控制圖片位置
-    1.1 前提:
-        所有圖片的位置都是以中心點來搭建
-            找到中心點:
-                把中心點放到網頁的水平居中、垂直居中
-        插入圖片
-    1.2 2D環境變成3D環境 (用 perspective 和 preserve-3d 實現)
-    1.3 js控制圖片的位置
-        1.3.1 怎麼讓所有div圍成一個圈
-            圈: 360 deg
-            用360 deg去平分div的旋轉角度
-*/
 
 function setTouch(){
     var move = false;
 
     $(document).on('touchstart', function(e){
-
-        // Safari does not have changedTouches property
-        // The jQuery Event object does not have a changedTouches property so use "e.originalEvent.changedTouches[0]"
         lastX = e.originalEvent.changedTouches[0].clientX || e.originalEvent.touches[0].clientX;
         lastY = e.originalEvent.changedTouches[0].clientY || e.originalEvent.touches[0].clientY;
         move = true;
@@ -223,7 +201,7 @@ function imgZoomInOut(e){
     // 檢查圖片的class裡是否有active
     const isExpand = ele.className && (ele.className.indexOf('active') !== -1);
 
-    // 第一次: 圖片放大(class裡加入active)，第二次: 恢復大小(去掉active)
+    // 第一次: 圖片放大，第二次: 恢復大小
     if (!isExpand) {
         ele.className += ' active';
     } else{
